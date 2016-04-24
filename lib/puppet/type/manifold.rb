@@ -96,6 +96,10 @@ Puppet::Type.newtype(:manifold) do
   # TODO
   newparam(:query) do
     desc 'A hash of matches and patterns to use'
+
+    validate do |value|
+      fail Puppet::ParseError, "Sorry, the query parameter is not yet implmented."
+    end
   end
 
   validate do

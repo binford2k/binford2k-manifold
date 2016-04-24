@@ -63,7 +63,7 @@ Valid values are `true`, `false`.
     A string or regex pattern to match in combination with the match param
 
 - **query**
-    A hash of matches and patterns to use
+    A hash of matches and patterns to use (unimplemented)
 
 - **relationship**
     The relationship to enforce from this resource to the matched resources
