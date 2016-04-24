@@ -1,4 +1,4 @@
-multi_rel { 'internal':
+manifold { 'internal':
   type         => 'package',
   match        => 'tag',
   pattern      => 'internal',
@@ -17,7 +17,7 @@ yumrepo { 'internal':
   enabled  => '1',
   gpgcheck => '0',
   priority => '10',
-  before   => Multi_rel['internal'],
+  before   => Manifold['internal'],
 }
 
 # Will cause a dependency cycle!

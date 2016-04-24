@@ -1,7 +1,7 @@
 manifold { 'internal':
   type         => 'package',
-  match        => 'title',
-  pattern      => 'foo',
+  match        => 'tag',
+  pattern      => /internal/,
   relationship => before,
 }
 
@@ -20,9 +20,9 @@ yumrepo { 'internal':
   before   => Manifold['internal'],
 }
 
-## Will cause a dependency cycle!
-# package { 'bugger':
-#   ensure  => present,
-#   tag     => 'internal',
-#   before  => Yumrepo['internal'],
-# }
+# Will cause a dependency cycle!
+package { 'bugger':
+  ensure  => present,
+  tag     => 'internal',
+  before  => Yumrepo['internal'],
+}

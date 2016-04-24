@@ -1,13 +1,15 @@
 manifold { 'internal':
-  type         => 'package',
+  type         => 'exec',
   match        => 'tag',
   pattern      => 'internal',
-  relationship => before,
+  relationship => notify,
 }
 
-package { ['foo', 'bar', 'baz']:
-  ensure  => present,
-  tag     => 'internal',
+exec { ['foo', 'bar', 'baz']:
+  command     => "/bin/echo 'it ran'",
+  logoutput   => true,
+  refreshonly => true,
+  tag         => 'internal',
 }
 
 yumrepo { 'internal':
@@ -19,10 +21,3 @@ yumrepo { 'internal':
   priority => '10',
   before   => Manifold['internal'],
 }
-
-## Will cause a dependency cycle!
-# package { 'bugger':
-#   ensure  => present,
-#   tag     => 'internal',
-#   before  => Yumrepo['internal'],
-# }
