@@ -155,7 +155,7 @@ Puppet::Type.newtype(:manifold) do
       found = ! (param.grep pattern).empty?
     end
 
-    invert ? !match : match
+    invert ? !found : found
   end
 
   def refresh
