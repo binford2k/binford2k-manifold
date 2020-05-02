@@ -1,5 +1,5 @@
 Puppet::Type.newtype(:manifold) do
-  desc <<-'ENDOFDESC'
+  desc <<-'EOD'
   A manifold is like an anchor, but used for defining multiple relationships,
   the way we used to use collectors before we realized how dangerous they were.
 
@@ -27,7 +27,7 @@ Puppet::Type.newtype(:manifold) do
         before   => Manifold['internal'],
       }
 
-  ENDOFDESC
+  EOD
 
 
   newparam(:type, :namevar => true) do
